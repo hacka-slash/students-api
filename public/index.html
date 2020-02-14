@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <label>First Name: </label><input id="firstName" /><br>
+    <label>Last Name: </label><input id="lastName" /><br>
+    <!-- <label>Graduation: </label><input id="graduation" /><br>
+    <label>Job Title: </label><input id="jobTitle" /><br>
+    <label>Company Name: </label><input id="companyName" /><br>
+    <label>Key Skills: </label><input id="keySkills" /><br>
+    <label>GitHub: </label><input id="gitHub" /><br>
+    <label>LinkedIn: </label><input id="linkedIn" /><br>
+    <label>Twitter: </label><input id="twitter" /><br>
+    <label>Photo: </label><input id="photo" /><br> -->
+    <br>
+    <button onClick="addGraduate()">Add Graduate</button>
+    
+
+</body>
+<script>
+    const sendHttpRequest = (method, url, data) => {
+            return fetch(url).then(response => {
+                return response.text();
+            });
+    };
+
+    const addGraduate = () => {
+        
+
+        const myData = {
+            fullName: document.getElementById('firstName').value,
+            email: document.getElementById('lastName').value
+        }
+        sendHttpRequest('POST', 'http://localhost:2000/graduate', myData);
+    }
+</script>
+</html>
