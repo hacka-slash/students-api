@@ -8,21 +8,25 @@
 <body>
     <label>First Name: </label><input id="firstName" /><br>
     <label>Last Name: </label><input id="lastName" /><br>
-    <!-- <label>Graduation: </label><input id="graduation" /><br>
+    <label>Graduation: </label><input id="graduation" /><br>
     <label>Job Title: </label><input id="jobTitle" /><br>
     <label>Company Name: </label><input id="companyName" /><br>
     <label>Key Skills: </label><input id="keySkills" /><br>
     <label>GitHub: </label><input id="gitHub" /><br>
     <label>LinkedIn: </label><input id="linkedIn" /><br>
     <label>Twitter: </label><input id="twitter" /><br>
-    <label>Photo: </label><input id="photo" /><br> -->
+    <label>Photo: </label><input id="photo" /><br>
     <br>
     <button onClick="addGraduate()">Add Graduate</button>
     
 
 </body>
 <script>
+<<<<<<< HEAD
     const sendHttpRequest = async (method, url, data) => {
+=======
+     const sendHttpRequest = async (method, url, data) => {
+>>>>>>> studentsDB
             return await fetch(url,{
                 method: method,
                 body: JSON.stringify(data),
@@ -35,12 +39,21 @@
             });
     };
 
+
     const addGraduate = () => {
         
 
         const myData = {
-            fullName: document.getElementById('firstName').value,
-            email: document.getElementById('lastName').value
+            firstName: document.getElementById('firstName').value,
+            lastName: document.getElementById('lastName').value,
+            graduation: document.getElementById('graduation').value,
+            jobTitle: document.getElementById('jobTitle').value,
+            companyName: document.getElementById('companyName').value,
+            keySkills: document.getElementById('keySkills').value,
+            gitHub: document.getElementById('gitHub').value,
+            linkedIn: document.getElementById('linkedIn').value,
+            twitter: document.getElementById('twitter').value,
+            photo: document.getElementById('photo').value
         }
         sendHttpRequest('POST', 'http://localhost:2000/graduate', myData);
     }

@@ -8,6 +8,7 @@ router.get('/', (req, res) => {
 
 router.post('/', async (req, res) => {
     const graduate = new Graduate(req.body);
+    //console.log(graduate)
     
     try{
         const savedGraduate = await graduate.save()
@@ -15,6 +16,7 @@ router.post('/', async (req, res) => {
         console.log(savedGraduate);
     }catch(err){
         res.json({message: err})
+        console.log(err);
     }
 })
 
