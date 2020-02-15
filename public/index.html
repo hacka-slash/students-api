@@ -22,9 +22,16 @@
 
 </body>
 <script>
-    const sendHttpRequest = (method, url, data) => {
-            return fetch(url).then(response => {
-                return response.text();
+    const sendHttpRequest = async (method, url, data) => {
+            return await fetch(url,{
+                method: method,
+                body: JSON.stringify(data),
+                headers: data ? {'Content-type': 'application/json'}: {}
+            }
+            
+            ).then(response => {
+                //return response.text();
+                console.log(response.text());
             });
     };
 

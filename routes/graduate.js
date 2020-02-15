@@ -12,6 +12,7 @@ router.post('/', async (req, res) => {
     try{
         const savedGraduate = await graduate.save()
         res.json(savedGraduate);
+        console.log(savedGraduate);
     }catch(err){
         res.json({message: err})
     }
