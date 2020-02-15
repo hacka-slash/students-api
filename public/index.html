@@ -22,18 +22,34 @@
 
 </body>
 <script>
-    const sendHttpRequest = (method, url, data) => {
-            return fetch(url).then(response => {
-                return response.text();
+     const sendHttpRequest = async (method, url, data) => {
+            return await fetch(url,{
+                method: method,
+                body: JSON.stringify(data),
+                headers: data ? {'Content-type': 'application/json'}: {}
+            }
+            
+            ).then(response => {
+                //return response.text();
+                console.log(response.text());
             });
     };
+
 
     const addGraduate = () => {
         
 
         const myData = {
-            fullName: document.getElementById('firstName').value,
-            email: document.getElementById('lastName').value
+            firstName: document.getElementById('firstName').value,
+            lastName: document.getElementById('lastName').value,
+            graduation: document.getElementById('graduation').value,
+            jobTitle: document.getElementById('jobTitle').value,
+            companyName: document.getElementById('companyName').value,
+            keySkills: document.getElementById('keySkills').value,
+            gitHub: document.getElementById('gitHub').value,
+            linkedIn: document.getElementById('linkedIn').value,
+            twitter: document.getElementById('twitter').value,
+            photo: document.getElementById('photo').value
         }
         sendHttpRequest('POST', 'http://localhost:2000/graduate', myData);
     }
