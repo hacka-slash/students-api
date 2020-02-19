@@ -18,15 +18,19 @@
     <label>Photo: </label><input id="photo" /><br>
     <br>
     <button onClick="addGraduate()">Add Graduate</button>
+
+    <hr />
+    <!-- We will do a list of all graduates. Must pull from DB -->
+    <div id="displayContainer">
+
+    </div>
+    <button onClick="displayGraduate()">Display Data</button>
+
     
 
 </body>
 <script>
-<<<<<<< HEAD
-    const sendHttpRequest = async (method, url, data) => {
-=======
      const sendHttpRequest = async (method, url, data) => {
->>>>>>> studentsDB
             return await fetch(url,{
                 method: method,
                 body: JSON.stringify(data),
@@ -41,8 +45,6 @@
 
 
     const addGraduate = () => {
-        
-
         const myData = {
             firstName: document.getElementById('firstName').value,
             lastName: document.getElementById('lastName').value,
@@ -57,5 +59,31 @@
         }
         sendHttpRequest('POST', 'http://localhost:2000/graduate', myData);
     }
+
+    const displayGraduate = () => {
+        //sendHttpRequest()
+        //alert("Hello");
+        fetch('http://localhost:2000/graduate').then(response => {
+            //alert(response);
+            return response.json();
+        })
+        .then(responseData => {
+            //console.log(responseData);
+            //Its an array. We must map etc. Save that
+            let displayContainer = document.getElementById("displayContainer");
+             responseData.forEach((databaseGraduate) => {
+                //console.log(databaseGraduate.firstName)
+                let divRecord = document.createElement("div");
+                divRecord.innerHTML = databaseGraduate.firstName;
+                displayContainer.appendChild(divRecord);
+                //ADD TO PARENT ELEMENT
+            })
+            // for(let i = 0; i < responseData.length; i++){
+            //     console.log(responseData[i].firstName)
+            //     document.creteElement("div");
+            //     //get parent element first then create element into that parent
+            // }
+        });
+    };
 </script>
 </html>
